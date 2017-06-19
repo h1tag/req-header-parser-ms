@@ -5,8 +5,12 @@ var path = require("path");
 var http = require("http");
 
 app.get('/', function(req, res){
-	var ip = req.headers['x-forwarded-for'];
-  	var ip_array = ip.split(',');
+	var ip = 0, ip_array = [];
+
+	if(req.headers['x-forwarded-for'] !== undefined){
+	ip = req.headers['x-forwarded-for'];
+  	ip_array = ip.split(',');
+  }else ip_array[0] = "undefined";
 	
 	var lang = req.acceptsLanguages()[0];
 	var os = ua.parse(req.headers['user-agent']).os.toString();
