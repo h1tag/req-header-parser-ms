@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 var ua = require('ua-parser');
-var path = require("path");
-var http = require("http");
 
 app.get('/', function(req, res){
 	var ip = 0, ip_array = [];
